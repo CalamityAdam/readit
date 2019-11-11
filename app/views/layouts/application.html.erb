@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <header>
+      Readit
+    </header>
+    <nav>
+      <%= link_to 'home', posts_path %>
+      <%= link_to 'new', new_post_path %>
+    </nav>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,14 @@
+<div class="posts-container">
+  <% @posts.each do |post| %>
+    <div class="post">
+      <h2 class="post-title"><%= link_to post.title, post %></h2>
+      votes: 
+      <span class="post-vote-count">
+        <%= post.votes %>
+        <%= link_to '^', post_upvote_url(post), method: :post %>
+        <%= link_to 'v', post_downvote_url(post), method: :post %>
+      </span>
+      <p class="post-body"><%= post.body[0, 50]... %></p>
+    </div>
+  <% end %>
+</div>

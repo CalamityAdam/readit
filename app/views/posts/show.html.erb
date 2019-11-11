@@ -1,0 +1,35 @@
+<div class="post-show">
+  <div class="post">
+    <h2 class="post-title">
+      <%= @post.title %>
+    </h2>
+    <span><%= @post.votes %></span>
+    <div class="post-body">
+      <%= @post.body %>
+    </div>
+  </div>
+  comments:
+  <div class="post-comments-container">
+    <% @comments.each do |comment| %>
+      <div class="comment">
+        <span>
+          <%= comment.votes %>
+          <%= link_to '^', post_comment_upvote_url(@post, comment), method: :post %>
+          <%= link_to 'v', post_comment_downvote_url(@post, comment), method: :post %>
+        </span>
+        <div>
+          <%= comment.body %>
+        </div>
+        
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="comment-form">
+    <h3>Add a comment</h3>
+    <%= form_with model: Comment.new, url: [@post, Comment.new] do |f| %>
+      <%= f.text_area :body %>
+      <%= f.submit 'comment' %>
+    <% end %>
+  </div>
+</div>
